@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Brand | Search</title>
+</head>
+<body>
+  <section class="section1">
+    <div style="margin: auto;">
+      <div style="margin-right: 726px;">
+        <img src="{{ url_for('static', filename='img/ABInBev.png') }}" alt="Logo - ABI Creative Hub">
+        <div class="box"></div>
+        <h1>Search for better VM for you</h1>
+      </div>
+    </div>
+    <img class="img-banner" src="{{ url_for('static', filename='img/img1.png') }}" alt="">
+    
+  </section>
+  <section class="section2">
+    <div class="container">
+      <h1>{{title}}:</h1>
+
+      <form action="/" method="post" class="form">
+        
+          <div class="form-group">
+            <label for="ram">RAM: </label>
+            <input type="number" id="ram" name="ram" class="input" required>
+          </div>
+          <div class="form-group">
+            <label for="vcpu">vCPU: </label>
+            <input type="text" id="vcpu" name="vcpu" class="input" required>
+          </div>
+          <div class="form-group">
+              <label for="os">Operating System: </label>
+              <input type="text" name="os" class="input-txt" required>
+          </div>
+          <button type="submit" class="btn">Search</button>
+        
+      </form>
+    </div>
+  </section>
+  <section class="section3">
+    <div  class="container">
+      <div class="box-container">
+        {% if vm_cheap %}
+          <h1 style="text-align: center;"> These are the Virtual Machines perfect for you</h1>
+          <ul>
+            <div>
+              <p style="text-align: center;"><b>Low-end VM</b></p>
+              <li>
+                <p>Name: {{vm_cheap.name}}</p>
+                <p>Family: {{vm_cheap.family}}</p>
+                <p>RAM: {{vm_cheap.ram}} GB</p>
+                <p>vCPU cores :{{vm_cheap.vcpu}} </p>
+                <p>Operating System: {{vm_cheap.os}}</p>
+                <p>Value: {{vm_cheap.price|round(2)}} price per hour</p>
+              </li>
+            </div>
+            <div>
+              <p style="text-align: center;"><b>Mid-range VM</b></p>
+              <li>
+                <p>Name: {{vm_medium.name}}</p>
+                <p>Family: {{vm_medium.family}}</p>
+                <p>RAM: {{vm_medium.ram}} GB</p>
+                <p>vCPU cores :{{vm_medium.vcpu}} </p>
+                <p>Operating System: {{vm_medium.os}}</p>
+                <p>Value: {{vm_medium.price|round(2)}} price per hour</p>
+              </li>
+            </div>
+            <div>
+              <p style="text-align: center;"><b>High-end VM</b></p>
+              <li>
+                <p>Name: {{vm_expensive.name}}</p>
+                <p>Family: {{vm_expensive.family}}</p>
+                <p>RAM: {{vm_expensive.ram}} GB</p>
+                <p>vCPU cores :{{vm_expensive.vcpu}} </p>
+                <p>Operating System: {{vm_expensive.os}}</p>
+                <p>Value: {{vm_expensive.price|round(2)}} price per hour</p>
+              </li>
+            </div>
+          </ul>
+        {% else %}
+          <h1 style="text-align: center;"> {{txt}} </h1>
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+  <section class="section4">
+    <div  class="container" style="justify-content: space-between;">
+      <div>
+        <a href="https://github.com/EdgarCampetelli">GitHub Edgar Campetelli</a>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/edgar.campetelli/" target="_blank"><img src="../static/img/icon/instagram.png" style="width: 20px; height: 20px;" alt="Icon for instagram"></a>
+        <a href="https://www.linkedin.com/in/edgar-campetelli-9118191ba/" target="_blank"><img src="../static/img/icon/linkedin.png" style="width: 20px; height: 20px;" alt="Icon for linkedin"></a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
