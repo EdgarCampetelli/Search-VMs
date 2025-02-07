@@ -130,6 +130,8 @@ input[type=number] {
 .section4{
     background-color: black;
     height: 100px;
+    position:fixed;
+    bottom:0px;
 }
 
 .section4 a{
