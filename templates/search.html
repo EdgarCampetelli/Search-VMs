@@ -47,7 +47,7 @@
           <h1 style="text-align: center;"> These are the Virtual Machines perfect for you</h1>
           <ul>
             <div>
-              <p style="text-align: center;"><b>Low-end VM</b></p>
+              <p style="text-align: center;"><b>Recommended VM</b></p>
               <li>
                 <p>Name: {{vm_cheap.name}}</p>
                 <p>Family: {{vm_cheap.family}}</p>
@@ -57,28 +57,36 @@
                 <p>Value: {{vm_cheap.price|round(2)}} price per hour</p>
               </li>
             </div>
-            <div>
-              <p style="text-align: center;"><b>Mid-range VM</b></p>
-              <li>
-                <p>Name: {{vm_medium.name}}</p>
-                <p>Family: {{vm_medium.family}}</p>
-                <p>RAM: {{vm_medium.ram}} GB</p>
-                <p>vCPU cores :{{vm_medium.vcpu}} </p>
-                <p>Operating System: {{vm_medium.os}}</p>
-                <p>Value: {{vm_medium.price|round(2)}} price per hour</p>
-              </li>
-            </div>
-            <div>
-              <p style="text-align: center;"><b>High-end VM</b></p>
-              <li>
-                <p>Name: {{vm_expensive.name}}</p>
-                <p>Family: {{vm_expensive.family}}</p>
-                <p>RAM: {{vm_expensive.ram}} GB</p>
-                <p>vCPU cores :{{vm_expensive.vcpu}} </p>
-                <p>Operating System: {{vm_expensive.os}}</p>
-                <p>Value: {{vm_expensive.price|round(2)}} price per hour</p>
-              </li>
-            </div>
+            {% if vm_cheap.name != vm_medium.name %}
+              <div>
+                <p style="text-align: center;"><b>Mid-level VM</b></p>
+                <li>
+                  <p>Name: {{vm_medium.name}}</p>
+                  <p>Family: {{vm_medium.family}}</p>
+                  <p>RAM: {{vm_medium.ram}} GB</p>
+                  <p>vCPU cores :{{vm_medium.vcpu}} </p>
+                  <p>Operating System: {{vm_medium.os}}</p>
+                  <p>Value: {{vm_medium.price|round(2)}} price per hour</p>
+                </li>
+              </div>
+            {% else %}
+
+            {% endif %}
+            {% if vm_cheap.name != vm_expensive.name %}
+              <div>
+                <p style="text-align: center;"><b>High-level VM</b></p>
+                <li>
+                  <p>Name: {{vm_expensive.name}}</p>
+                  <p>Family: {{vm_expensive.family}}</p>
+                  <p>RAM: {{vm_expensive.ram}} GB</p>
+                  <p>vCPU cores :{{vm_expensive.vcpu}} </p>
+                  <p>Operating System: {{vm_expensive.os}}</p>
+                  <p>Value: {{vm_expensive.price|round(2)}} price per hour</p>
+                </li>
+              </div>
+            {% else %}
+
+            {% endif %}  
           </ul>
         {% else %}
           <h1 style="text-align: center;"> {{txt}} </h1>
